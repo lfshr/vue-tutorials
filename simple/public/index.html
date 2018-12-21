@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1 v-if="showMessage">{{ message }}</h1>
+      <h1 v-else>Hello World!</h1>
+
+      <ul>
+        <li v-for="otherMessage in otherMessages">{{ otherMessage }}</li>
+      </ul>
+
+      <button v-on:click="reverseString">Reverse</button>
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          showMessage: true,
+          message: "Hello Vue!",
+          otherMessages: ["This", "is", "an", "array", "of", "messages"],
+        },
+        methods: {
+          reverseString: function() {
+            this.message = this.message
+              .split("")
+              .reverse()
+              .join("");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
